@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -123,6 +123,16 @@ public class CharacterController : MonoBehaviour
             canJump = true;
             coyoteTimer = 0;
         }
+        if (onGround)
+        {
+            isHangFalling = false;
+
+            if (currentPlatform != null)
+            {
+                Physics2D.IgnoreCollision(characterCollider, currentPlatform, false);
+                currentPlatformScript.ChangeActivation(false);
+            }
+        }
     }
 
     void MovementController()
@@ -240,7 +250,10 @@ public class CharacterController : MonoBehaviour
                 print("CurrentPlatform is null");
 
             }
+
+
         }
+       
     }
 
 
