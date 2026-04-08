@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
             return _instance;
         }
     }
+
     private void Awake()
     {
         _instance = this;
@@ -24,20 +25,23 @@ public class GameManager : MonoBehaviour
     public bool isGameStopped { get; private set; }
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        
+
     }
     public void StopGame()
     {
-
+        Time.timeScale = 0;
+        isGameStopped = true;
     }
 
     public void StartGame()
     {
+        Time.timeScale = 1;
+        isGameStopped = false;
 
     }
 }//Class

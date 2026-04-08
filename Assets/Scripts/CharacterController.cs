@@ -8,6 +8,7 @@ public class CharacterController : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce = 8f;
     [Header("Essentials")]
+    [SerializeField] GameObject visuals;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundCheckRadius = 0.2f;
     [SerializeField] LayerMask groundLayer;
@@ -24,11 +25,15 @@ public class CharacterController : MonoBehaviour
     bool isHangFalling = false;
     bool isHanging = false;
 
+    bool isTurnedLeft = false;
+    bool isTurning = false;
+
     //Timers
     float coyoteTimer;
 
     Collider2D characterCollider;
     Collider2D currentPlatform;
+    Platform currentPlatformScript;
 
     [SerializeField] Transform headCheck; // small point at the top of the character
     [SerializeField] float headRayDistance = 0.2f; // distance to check platform above
@@ -51,6 +56,7 @@ public class CharacterController : MonoBehaviour
         {
             HangFall();
         }
+        RotationCheck();
         //if (isHanging && !isOnPlatform)
         //{
         //    // Re-enable gravity if player walks off platform
@@ -135,6 +141,46 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    void RotationCheck()
+    {
+        if (visuals == null || isHangFalling || isHanging || isOnAir) return;
+
+        if (InputController.Instance.XInput > 0 && isTurnedLeft)
+        {
+            StartCoroutine(Turn(0));
+        }
+        else if (InputController.Instance.XInput < 0 && !isTurnedLeft)
+        {
+            StartCoroutine(Turn(180));
+
+        }
+    }
+    IEnumerator Turn(int _angle)
+    {
+        isTurning = true;
+        float startAngle = visuals.transform.localEulerAngles.y;
+
+        float elapsed = 0;
+        float duration = 0.15f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            float angle = Mathf.Lerp(startAngle, _angle, t);
+            visuals.transform.eulerAngles = new Vector3(0, angle, 0);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        isTurning = false;
+        if (_angle == 0)
+        {
+            isTurnedLeft = false;
+        }
+        else
+        {
+            isTurnedLeft = true;
+        }
+    }
     void JumpButtonPress()
     {
         if (isHangFalling) return;
@@ -161,6 +207,8 @@ public class CharacterController : MonoBehaviour
         {
             isHanging = false;
             rb.gravityScale = constantGravity;
+            currentPlatformScript.ChangeActivation(false);
+            currentPlatformScript = null;
             currentPlatform = null;
         }
     }
@@ -185,6 +233,7 @@ public class CharacterController : MonoBehaviour
             if (currentPlatform != null)
             {
                 Physics2D.IgnoreCollision(characterCollider, currentPlatform, false);
+                currentPlatformScript.ChangeActivation(true);
             }
             else
             {
@@ -193,13 +242,15 @@ public class CharacterController : MonoBehaviour
             }
         }
     }
- 
+
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Platform"))
         {
-            currentPlatform = collision.gameObject.GetComponent<Collider2D>();
+            GameObject platform = collision.gameObject;
+            currentPlatform = platform.GetComponent<Collider2D>();
+            currentPlatformScript = platform.GetComponent<Platform>();
         }
     }
 
