@@ -36,6 +36,10 @@ public class InputController : MonoBehaviour
     }
     void KeyboardInputManager()
     {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            onInventoryButtonPress?.Invoke();
+        }
         if (GameManager.Instance.isGameStopped) return;
         yInput = Input.GetKey(KeyCode.W) ? 1 : Input.GetKey(KeyCode.S) ? -1 : 0;
         xInput = Input.GetKey(KeyCode.D) ? 1 : Input.GetKey(KeyCode.A) ? -1 : 0;
@@ -50,9 +54,6 @@ public class InputController : MonoBehaviour
         {
             onInteractButtonPress?.Invoke();
         }
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            onInventoryButtonPress?.Invoke();
-        }
+       
     }
 }//Class
