@@ -26,6 +26,7 @@ public class Mixer : MonoBehaviour
     {
         CookingMiniGame cMG = cookingMinigame.GetComponent<CookingMiniGame>();
         if (cMG.isGameActive) return;
+        print("Game started");
         //if (inventorySc.CheckItemAmount())
         //{
         cookingMinigame.SetActive(true);

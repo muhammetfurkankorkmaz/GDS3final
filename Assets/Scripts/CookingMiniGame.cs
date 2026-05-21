@@ -12,8 +12,13 @@ public class CookingMiniGame : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] float originalSliderSpeed;
     [SerializeField] float successRange = 0.5f;
-
+    [Header("CookieMan")]
+    [SerializeField] GameObject cookieMan;
+    [SerializeField] Transform cookieManSpawnPoint;
     public bool isGameActive { get; private set; } = false;
+
+    bool isGameWon = false;
+
     float sliderSpeed;
 
     int direction = 1;
@@ -37,6 +42,7 @@ public class CookingMiniGame : MonoBehaviour
     }
     public void StartMiniGame()
     {
+        if (isGameWon) return;
         sliderSpeed = originalSliderSpeed;
         isGameActive = true;
         winCount = 0;
@@ -76,10 +82,13 @@ public class CookingMiniGame : MonoBehaviour
             stopPoint.transform.localPosition.x
         );
 
-        if (distance <= successRange)
+        print(slider.transform.localPosition.x + " is the slider point");
+        print(stopPoint.transform.localPosition.x + " is the stoppoint stop point");
+
+        if (slider.transform.localPosition.x <= stopPoint.transform.localPosition.x + successRange && slider.transform.localPosition.x > stopPoint.transform.localPosition.x - successRange)
         {
             winCount++;
-            if (winCount < 3)
+            if (winCount < 1)
             {
                 RandomizeStopPosition();
             }
@@ -95,24 +104,32 @@ public class CookingMiniGame : MonoBehaviour
     }
     void RandomizeStopPosition()
     {
+        print("Step randomized");
         float randomX = Random.Range(-edgePoint, edgePoint);
 
         stopPoint.transform.localPosition = new Vector3(randomX, stopPoint.transform.localPosition.y, 0f);
     }
     void WinMiniGame()
     {
-        print("haha");
+        print("Mini game won");
         //It closes the object
+        Instantiate(cookieMan, cookieManSpawnPoint.position, Quaternion.identity);
+
         isGameActive = false;
+        isGameWon = true;
+        gameObject.SetActive(false);
+
         //It spawns the cookie man
     }
 
     void LoseMiniGame()
     {
         //It closes the object
-        print("haha YOU LOST");
+        print("mini game lost YOU LOST");
+        winCount = 0;
         isGameActive = false;
         //It resets the objects
+        gameObject.SetActive(false);
 
     }
     void OnDrawGizmos()
