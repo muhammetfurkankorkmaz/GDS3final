@@ -21,6 +21,7 @@ public class Inventory : MonoBehaviour
     public void AddItem(string _itemName, Sprite _itemSprite)
     {
         if (itemAmount >= 4) return;
+        slots[itemAmount].enabled = true;
         slots[itemAmount].sprite = _itemSprite;
         itemAmount++;
     }
@@ -28,6 +29,8 @@ public class Inventory : MonoBehaviour
     public void RemoveItem(string _itemName)
     {
         //Should check the name of the item
+        slots[itemAmount].enabled = false;
+
         slots[itemAmount].sprite = null;
         itemAmount--;
     }

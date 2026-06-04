@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Takeble
       objectReference: {fileID: 0}
+    - target: {fileID: 6974580782396102743, guid: 75538021507214644b7c8feb3747fcf3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 7132486079918464550, guid: 75538021507214644b7c8feb3747fcf3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

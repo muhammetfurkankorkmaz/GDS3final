@@ -15,18 +15,27 @@ public class CookingMiniGame : MonoBehaviour
     [Header("CookieMan")]
     [SerializeField] GameObject cookieMan;
     [SerializeField] Transform cookieManSpawnPoint;
+    [Header("Cookies")]
+    [SerializeField] GameObject[] cookies;
     public bool isGameActive { get; private set; } = false;
 
-    bool isGameWon = false;
+    [SerializeField] Color cookieStartColor;
+    [SerializeField] Color cookieEndColor;
+    [SerializeField] GameObject cookieParticle;
+
+
+    public bool isGameWon { get; private set; } = false;
 
     float sliderSpeed;
 
     int direction = 1;
 
     int winCount = 0;
+
+    Mixer mixerScript;
     void Start()
     {
-
+        mixerScript = GetComponentInParent<Mixer>();
     }
 
     void Update()
@@ -88,12 +97,15 @@ public class CookingMiniGame : MonoBehaviour
         if (slider.transform.localPosition.x <= stopPoint.transform.localPosition.x + successRange && slider.transform.localPosition.x > stopPoint.transform.localPosition.x - successRange)
         {
             winCount++;
-            if (winCount < 1)
+            UpdateCookie();
+            if (winCount < 3)
             {
+                CreateCookieParticle();
                 RandomizeStopPosition();
             }
             else
             {
+                CreateCookieParticle();
                 WinMiniGame();
             }
         }
@@ -108,6 +120,32 @@ public class CookingMiniGame : MonoBehaviour
         float randomX = Random.Range(-edgePoint, edgePoint);
 
         stopPoint.transform.localPosition = new Vector3(randomX, stopPoint.transform.localPosition.y, 0f);
+    }
+    void CreateCookieParticle()
+    {
+        if (cookieParticle != null)
+            Instantiate(cookieParticle, transform.position, Quaternion.identity);
+    }
+    void UpdateCookie()
+    {
+        if (winCount == 1)
+        {
+            cookies[0].GetComponent<SpriteRenderer>().color = cookieEndColor;
+        }
+        else if (winCount == 2)
+        {
+            cookies[0].GetComponent<SpriteRenderer>().color = cookieEndColor;
+            cookies[1].GetComponent<SpriteRenderer>().color = cookieEndColor;
+
+        }
+        else if (winCount == 3)
+        {
+            cookies[0].GetComponent<SpriteRenderer>().color = cookieEndColor;
+            cookies[1].GetComponent<SpriteRenderer>().color = cookieEndColor;
+            cookies[2].GetComponent<SpriteRenderer>().color = cookieEndColor;
+
+
+        }
     }
     void WinMiniGame()
     {
@@ -125,10 +163,14 @@ public class CookingMiniGame : MonoBehaviour
     void LoseMiniGame()
     {
         //It closes the object
-        print("mini game lost YOU LOST");
+        mixerScript.OpenInteractImage();
+        //print("mini game lost YOU LOST");
         winCount = 0;
         isGameActive = false;
         //It resets the objects
+        cookies[0].GetComponent<SpriteRenderer>().color = cookieStartColor;
+        cookies[1].GetComponent<SpriteRenderer>().color = cookieStartColor;
+        cookies[2].GetComponent<SpriteRenderer>().color = cookieStartColor;
         gameObject.SetActive(false);
 
     }

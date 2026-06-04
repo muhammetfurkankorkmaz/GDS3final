@@ -20,6 +20,8 @@ public class Catapult : MonoBehaviour
     GameObject playerObject;
     Rigidbody2D playerRb;
 
+    bool isZoomHappened = false;
+
     void Start()
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
@@ -35,7 +37,34 @@ public class Catapult : MonoBehaviour
             {
                 print("hoho");
                 throwPlayerCoroutine = StartCoroutine(LaunchPlayer());
+                //if (!isZoomHappened)
+                //{
+
+                    StartCoroutine(CameraZoomOut());
+    
             }
+        }
+    }
+
+    IEnumerator CameraZoomOut()
+    {
+        isZoomHappened = true;
+        yield return new WaitForSeconds(0.25f);
+        float zoomStart = Camera.main.orthographicSize;
+
+        float zoomEnd = 4.75f;
+
+        float elapsed = 0;
+        float duration = 0.5f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+
+            float size = Mathf.Lerp(zoomStart, zoomEnd, t);
+            Camera.main.orthographicSize = size;
+            elapsed += Time.deltaTime;
+            yield return null;
         }
     }
     IEnumerator LaunchPlayer()
@@ -47,6 +76,7 @@ public class Catapult : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         // Add launch force
         playerRb.AddForce(launchForce, ForceMode2D.Impulse);
+        playerObject.GetComponent<CharacterController>().StartJumpAnimation();
     }
     public void UpdateCookieManInfo(CookieMan _cookimanCH)
     {

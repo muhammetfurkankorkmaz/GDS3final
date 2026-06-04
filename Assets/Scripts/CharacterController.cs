@@ -35,16 +35,20 @@ public class CharacterController : MonoBehaviour
     Collider2D currentPlatform;
     Platform currentPlatformScript;
 
+    [SerializeField] CHAnimation cHAnimationScript;
+
     [SerializeField] Transform headCheck; // small point at the top of the character
     [SerializeField] float headRayDistance = 0.2f; // distance to check platform above
+
+    Coroutine changeToIdleCoroutine;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         characterCollider = GetComponent<Collider2D>();
         constantGravity = rb.gravityScale;
-
         InputController.Instance.onJumpButtonPress += JumpButtonPress;
+        //Time.timeScale = 0.2f;
     }
 
     void Update()
@@ -92,9 +96,19 @@ public class CharacterController : MonoBehaviour
         if (rb.velocity.y < -0.01f)//Falling
         {
             rb.gravityScale = Mathf.Min(rb.gravityScale + 0.015f, 15);
+            cHAnimationScript.ChangeState("CharacterFall");
         }
         else if (rb.gravityScale != constantGravity)
         {
+            cHAnimationScript.ChangeState("CharacterLand");
+            if (changeToIdleCoroutine != null)
+            {
+
+                print("annen annen");
+                return;
+            }
+            changeToIdleCoroutine = StartCoroutine(ChangeToIdle());
+
             rb.gravityScale = constantGravity;
         }
     }
@@ -140,30 +154,48 @@ public class CharacterController : MonoBehaviour
         if (isHangFalling || isHanging) return;
         xMovement = InputController.Instance.XInput;
 
+        if (xMovement == 0 && !isOnAir)
+        {
+            if (cHAnimationScript.currentState != "CharacterLand" && cHAnimationScript.currentState != "CharacterFall" && cHAnimationScript.currentState != "CharacterJump")
+            {
+
+                cHAnimationScript.ChangeState("CharacterIdle");
+            }
+        }
         // Apply movement
-        if (!isOnAir)
+        if (xMovement != 0 && !isOnAir)
         {
             rb.velocity = new Vector2(xMovement * moveSpeed, rb.velocity.y);
+            cHAnimationScript.ChangeState("CharacterWalk");
         }
         else
         {
             rb.velocity = new Vector2(xMovement * moveSpeed * 0.75f, rb.velocity.y);
         }
     }
-
+    IEnumerator ChangeToIdle()
+    {
+        yield return new WaitForSeconds(0.1f);
+        cHAnimationScript.ChangeState("CharacterIdle");
+        changeToIdleCoroutine = null;
+    }
     void RotationCheck()
     {
         if (visuals == null || isHangFalling || isHanging || isOnAir) return;
 
-        if (InputController.Instance.XInput > 0 && isTurnedLeft)
-        {
-            StartCoroutine(Turn(0));
-        }
-        else if (InputController.Instance.XInput < 0 && !isTurnedLeft)
+        if (InputController.Instance.XInput > 0 && !isTurnedLeft)
         {
             StartCoroutine(Turn(180));
+        }
+        else if (InputController.Instance.XInput < 0 && isTurnedLeft)
+        {
+            StartCoroutine(Turn(0));
 
         }
+    }
+    public void StartJumpAnimation()
+    {
+        cHAnimationScript.ChangeState("CharacterJump");
     }
     IEnumerator Turn(int _angle)
     {
@@ -200,6 +232,7 @@ public class CharacterController : MonoBehaviour
             //Jumps
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             canJump = false;
+            cHAnimationScript.ChangeState("CharacterJump");
         }
         else if (isOnPlatform)
         {
@@ -220,6 +253,7 @@ public class CharacterController : MonoBehaviour
             currentPlatformScript.ChangeActivation(false);
             currentPlatformScript = null;
             currentPlatform = null;
+
         }
     }
     void HangFall()
@@ -244,18 +278,16 @@ public class CharacterController : MonoBehaviour
             {
                 Physics2D.IgnoreCollision(characterCollider, currentPlatform, false);
                 currentPlatformScript.ChangeActivation(true);
+                cHAnimationScript.ChangeState("CharacterHold");
+
             }
             else
             {
                 print("CurrentPlatform is null");
 
             }
-
-
         }
-       
     }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
