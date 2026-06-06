@@ -105,8 +105,6 @@ public class CharacterController : MonoBehaviour
             cHAnimationScript.ChangeState("CharacterLand");
             if (changeToIdleCoroutine != null)
             {
-
-                print("annen annen");
                 return;
             }
             changeToIdleCoroutine = StartCoroutine(ChangeToIdle());
@@ -181,7 +179,7 @@ public class CharacterController : MonoBehaviour
     }
     IEnumerator ChangeToIdle()
     {
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.15f);
         cHAnimationScript.ChangeState("CharacterIdle");
         changeToIdleCoroutine = null;
     }

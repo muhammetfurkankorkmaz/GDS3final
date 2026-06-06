@@ -13,6 +13,8 @@ public class PC : MonoBehaviour
     [SerializeField] Color fullColor;
     [SerializeField] GameObject pcParticle;
     [SerializeField] GameObject interactButton;
+    [SerializeField] GameObject platformMiddle;
+    [SerializeField] GameObject platformTop;
     [Header("Variables")]
     [SerializeField] float pulseSpeed = 6f;
     [SerializeField] float pulseAmount = 0.15f;
@@ -30,6 +32,9 @@ public class PC : MonoBehaviour
     public bool isGameWon { get; private set; } = false;
 
     VideoPlayer videoPlayer;
+
+    bool isZoomHappened = false;
+
 
     bool isGameOpen;
     void Start()
@@ -65,7 +70,7 @@ public class PC : MonoBehaviour
     void IncreaseFill()
     {
         if (!isGameOpen || isGameWon) return;
-        fillAmount += 0.05f - fillAmount * 0.005f;
+        fillAmount += 0.05f - fillAmount * 0.0035f;
         fillAmount = Mathf.Clamp(fillAmount, 0, 1);
         fillImage.fillAmount = fillAmount / 1;
         CheckWinCondition();
@@ -91,6 +96,30 @@ public class PC : MonoBehaviour
             CameraShaker.Presets.ShortShake2D(0.08f, 0.1f, 30, 5);
             interactButton.SetActive(false);
             catScript.CatJump();
+            platformMiddle.SetActive(true);
+            platformTop.SetActive(true);
+            StartCoroutine(CameraZoomOut());
+        }
+    }
+    IEnumerator CameraZoomOut()
+    {
+        isZoomHappened = true;
+        yield return new WaitForSeconds(0.25f);
+        float zoomStart = Camera.main.orthographicSize;
+
+        float zoomEnd = 4.75f;
+
+        float elapsed = 0;
+        float duration = 0.5f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+
+            float size = Mathf.Lerp(zoomStart, zoomEnd, t);
+            Camera.main.orthographicSize = size;
+            elapsed += Time.deltaTime;
+            yield return null;
         }
     }
     void CheckVideo()

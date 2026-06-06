@@ -8,6 +8,8 @@ public class NextLevel : MonoBehaviour
     [Header("Essentials")]
     [SerializeField] GameObject interactVisual;
 
+    [SerializeField] string nextLevelName;
+
     bool isInInteractRange = false;
 
     public bool canPlayerInteract = true;
@@ -23,7 +25,7 @@ public class NextLevel : MonoBehaviour
     {
         if (isInInteractRange && canPlayerInteract)
         {
-            SceneManager.LoadScene("Level 2");
+            SceneManager.LoadScene(nextLevelName);
         }
     }
 

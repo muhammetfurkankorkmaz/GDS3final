@@ -171,6 +171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactVisual: {fileID: 553972991}
+  nextLevelName: Level 2
   canPlayerInteract: 1
 --- !u!70 &5854364
 CapsuleCollider2D:
@@ -4143,7 +4144,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6af85416f68827e43b4cbed37bd8b69a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 33bb0db546e5e2540bdacf15e1afc779, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
