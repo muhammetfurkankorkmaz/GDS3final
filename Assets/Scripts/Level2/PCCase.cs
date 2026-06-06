@@ -7,6 +7,7 @@ public class PCCase : MonoBehaviour
     [Header("Essentials")]
     [SerializeField] GameObject interactVisual;
     [SerializeField] Cat catScript;
+    [SerializeField] PC pcScript;
 
     bool isInInteractRange = false;
     Inventory inventoryScript;
@@ -32,6 +33,7 @@ public class PCCase : MonoBehaviour
             //Starts the game
             print("PC game started");
             catScript.ChangeToSitAnimation();
+            pcScript.OpenPC();
         }
     }
 

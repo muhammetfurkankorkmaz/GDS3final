@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using CameraShake;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -100,6 +101,7 @@ public class CharacterController : MonoBehaviour
         }
         else if (rb.gravityScale != constantGravity)
         {
+            CameraShaker.Presets.ShortShake2D(0.04f, 0.06f, 30, 3);
             cHAnimationScript.ChangeState("CharacterLand");
             if (changeToIdleCoroutine != null)
             {

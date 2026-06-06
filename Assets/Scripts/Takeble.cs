@@ -8,6 +8,7 @@ public class Takeble : MonoBehaviour
 
     [SerializeField] string interactibleName;
     [SerializeField] Sprite interactibleSprite;
+    [SerializeField] GameObject particleObject;
 
     bool isItemTaken = false;
 
@@ -51,6 +52,8 @@ public class Takeble : MonoBehaviour
         isItemTaken = true;
         sr.enabled = false;
         col.enabled = false;
+        if (particleObject != null)
+            particleObject.SetActive(false);
     }
 
     public void OpenInteraction()

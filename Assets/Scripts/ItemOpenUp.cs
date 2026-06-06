@@ -7,6 +7,7 @@ public class ItemOpenUp : MonoBehaviour
     [SerializeField] GameObject objectToOpen;
     [SerializeField] string openAnimationName;
     [SerializeField] AnimationPlayer animationPlayerScript;
+    [SerializeField] GameObject particleObject;
     Platform platformScript;
     SpriteRenderer sr;
 
@@ -41,6 +42,8 @@ public class ItemOpenUp : MonoBehaviour
         {
             if (objectToOpen != null)
                 objectToOpen.SetActive(true);
+            if (particleObject != null)
+                particleObject.SetActive(false);
             isOpen = true;
         }
     }
