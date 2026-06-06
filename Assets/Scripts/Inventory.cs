@@ -23,6 +23,25 @@ public class Inventory : MonoBehaviour
         if (itemAmount >= 4) return;
         slots[itemAmount].enabled = true;
         slots[itemAmount].sprite = _itemSprite;
+        if (_itemName == "choco")
+        {
+            slots[itemAmount].GetComponent<RectTransform>().sizeDelta = new Vector2(160, 80);
+        }
+        else if (_itemName == "flour")
+        {
+            slots[itemAmount].GetComponent<RectTransform>().sizeDelta = new Vector2(80, 80);
+
+        }
+        else if (_itemName == "butter")
+        {
+            slots[itemAmount].GetComponent<RectTransform>().sizeDelta = new Vector2(120, 80);
+        }
+        else
+
+        {
+            slots[itemAmount].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 80);
+
+        }
         itemAmount++;
     }
 

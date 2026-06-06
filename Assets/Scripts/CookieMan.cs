@@ -15,17 +15,16 @@ public class CookieMan : MonoBehaviour
     public float stopDistance = 0.1f;
     [SerializeField] Vector3 extraDistance = new Vector3(2f, 0, 0);
 
+    AnimationPlayer animationPlayerScript;
+
     void Start()
     {
         catapultObject = GameObject.FindGameObjectWithTag("Catapult").GetComponent<Catapult>();
+        animationPlayerScript = GetComponentInChildren<AnimationPlayer>();
         StartCoroutine(CookieManStartAnimation());
 
     }
 
-    void Update()
-    {
-
-    }
 
     public void PlayCookieManCatapultAnimation()
     {
@@ -85,10 +84,11 @@ public class CookieMan : MonoBehaviour
     {
         //Jumps to right 
         //Goes near the catapult and waits
+
         Vector3 startPos = transform.position;
 
         // Landing position after jump
-        Vector3 endPos = new Vector3(1.9f, 1.75f, 0);
+        Vector3 endPos = new Vector3(1.75f, 1.55f, 0);
 
         float timer = 0f;
 
@@ -96,7 +96,6 @@ public class CookieMan : MonoBehaviour
         while (timer < jumpDuration)
         {
             float t = timer / jumpDuration;
-
             // Smooth horizontal movement
             Vector3 currentPos = Vector3.Lerp(startPos, endPos, t);
 
@@ -114,6 +113,7 @@ public class CookieMan : MonoBehaviour
 
         // Small pause after landing
         yield return new WaitForSeconds(0.2f);
+        animationPlayerScript.ChangeState("CookieManWalk");
 
         Vector3 catapultEndPos = new Vector3(catapultObject.transform.position.x + extraDistance.x, endPos.y, 0);
 
@@ -130,7 +130,9 @@ public class CookieMan : MonoBehaviour
             yield return null;
         }
         catapultObject.UpdateCookieManInfo(this);
+        transform.eulerAngles = new Vector3(0, 180, 0);
         Debug.Log("CookieMan reached the catapult.");
-    }
+        animationPlayerScript.ChangeState("CookieManIdle");
 
+    }
 }//Class

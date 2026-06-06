@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemOpenUp : MonoBehaviour
 {
     [SerializeField] GameObject objectToOpen;
+    [SerializeField] string openAnimationName;
+    [SerializeField] AnimationPlayer animationPlayerScript;
     Platform platformScript;
     SpriteRenderer sr;
 
@@ -30,8 +32,12 @@ public class ItemOpenUp : MonoBehaviour
     void OpenItem()
     {
         if (isOpen) return;
+        if (openAnimationName != "")
+        {
+            animationPlayerScript.ChangeState(openAnimationName);
+        }
         timer += Time.deltaTime;
-        if (timer >= 1)
+        if (timer >= 0.45f)
         {
             if (objectToOpen != null)
                 objectToOpen.SetActive(true);

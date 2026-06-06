@@ -166,7 +166,11 @@ public class CharacterController : MonoBehaviour
         if (xMovement != 0 && !isOnAir)
         {
             rb.velocity = new Vector2(xMovement * moveSpeed, rb.velocity.y);
-            cHAnimationScript.ChangeState("CharacterWalk");
+            if (rb.velocity.y > -0.01f && rb.velocity.y < 0.01f)
+            {
+
+                cHAnimationScript.ChangeState("CharacterWalk");
+            }
         }
         else
         {
