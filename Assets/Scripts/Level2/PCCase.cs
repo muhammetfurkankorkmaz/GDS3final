@@ -28,7 +28,7 @@ public class PCCase : MonoBehaviour
 
     void CheckForInteraction()
     {
-        if (inventoryScript.CheckIfPlayerHasCatCD() && isInInteractRange)
+        if (/*inventoryScript.CheckIfPlayerHasCatCD() &&*/ isInInteractRange && !pcScript.isGameWon)
         {
             //Starts the game
             print("PC game started");
@@ -39,7 +39,7 @@ public class PCCase : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && inventoryScript.CheckIfPlayerHasCatCD())
+        if (collision.CompareTag("Player") /*&& inventoryScript.CheckIfPlayerHasCatCD()*/)
         {
             interactVisual.SetActive(true);
             isInInteractRange = true;
@@ -47,7 +47,7 @@ public class PCCase : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && inventoryScript.CheckIfPlayerHasCatCD())
+        if (collision.CompareTag("Player") /*&& inventoryScript.CheckIfPlayerHasCatCD()*/)
         {
             interactVisual.SetActive(false);
             isInInteractRange = false;
