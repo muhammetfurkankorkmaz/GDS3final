@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 72057ba0de7678048bacd64efa0c2687
+guid: 8160d8eb426b3ca4cad0e1f64b1f6476
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,64 +136,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: dolap_anim2_0
+      name: cekmece_anim (2)_0
       rect:
         serializedVersion: 2
-        x: 349
-        y: 50
-        width: 1031
-        height: 488
+        x: 102
+        y: 59
+        width: 395
+        height: 481
       alignment: 9
-      pivot: {x: 0.371, y: 0.468}
+      pivot: {x: 0.479, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ea52780209a789c4297a1a5f013273ae
-      internalID: 144029052
+      spriteID: 146fd7e6a0408a046ab4410252ce2727
+      internalID: 908828604
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dolap_anim2_1
+      name: cekmece_anim (2)_1
       rect:
         serializedVersion: 2
-        x: 1599
+        x: 763
         y: 57
-        width: 1031
-        height: 488
+        width: 395
+        height: 481
       alignment: 9
-      pivot: {x: 0.371, y: 0.468}
+      pivot: {x: 0.479, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 542d6cca5c4d9564b98af9fcde7f3714
-      internalID: 1744340942
+      spriteID: b5226ec3925e79942aa38419296645a3
+      internalID: -384659202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: dolap_anim2_2
+      name: cekmece_anim (2)_2
       rect:
         serializedVersion: 2
-        x: 3077
-        y: 52
-        width: 1031
-        height: 488
+        x: 1421
+        y: 59
+        width: 395
+        height: 481
       alignment: 9
-      pivot: {x: 0.371, y: 0.468}
+      pivot: {x: 0.479, y: 0.47}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c5120aa4a4330b44a8c02ba245d5117
-      internalID: 1106108442
+      spriteID: 78313bb103a4bce498adabe7635ebfad
+      internalID: 1278204440
       vertices: []
       indices: 
       edges: []
@@ -209,9 +209,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      dolap_anim2_0: 144029052
-      dolap_anim2_1: 1744340942
-      dolap_anim2_2: 1106108442
+      cekmece_anim (2)_0: 908828604
+      cekmece_anim (2)_1: -384659202
+      cekmece_anim (2)_2: 1278204440
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

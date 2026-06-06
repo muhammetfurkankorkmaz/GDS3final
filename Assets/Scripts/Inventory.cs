@@ -10,6 +10,8 @@ public class Inventory : MonoBehaviour
 
     int itemAmount = 0;
 
+    bool isNeedleTaken = false;
+
     void Start()
     {
     }
@@ -23,6 +25,11 @@ public class Inventory : MonoBehaviour
         if (itemAmount >= 4) return;
         slots[itemAmount].enabled = true;
         slots[itemAmount].sprite = _itemSprite;
+
+        if(_itemName=="needle")
+        {
+            isNeedleTaken = true;
+        }
         if (_itemName == "choco")
         {
             slots[itemAmount].GetComponent<RectTransform>().sizeDelta = new Vector2(160, 80);
@@ -40,7 +47,6 @@ public class Inventory : MonoBehaviour
 
         {
             slots[itemAmount].GetComponent<RectTransform>().sizeDelta = new Vector2(100, 80);
-
         }
         itemAmount++;
     }
@@ -65,6 +71,10 @@ public class Inventory : MonoBehaviour
         if (itemAmount >= 4)
             return true;
         else return false;
+    }
+    public bool CheckIfPlayerHasNeedle()
+    {
+        return isNeedleTaken;
     }
 
 }

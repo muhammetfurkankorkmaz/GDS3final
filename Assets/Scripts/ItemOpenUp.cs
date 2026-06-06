@@ -37,7 +37,7 @@ public class ItemOpenUp : MonoBehaviour
             animationPlayerScript.ChangeState(openAnimationName);
         }
         timer += Time.deltaTime;
-        if (timer >= 0.45f)
+        if (timer >= 0.38f)
         {
             if (objectToOpen != null)
                 objectToOpen.SetActive(true);
