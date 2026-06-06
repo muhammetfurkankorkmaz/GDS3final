@@ -14,6 +14,8 @@ public class TeddyBear : MonoBehaviour
 
     [SerializeField] SpriteRenderer sr;
 
+    [SerializeField] Chest chestScript;
+
     [Header("Essentials")]
     [SerializeField] GameObject interactVisual;
 
@@ -43,12 +45,12 @@ public class TeddyBear : MonoBehaviour
             if (inventoryScript.CheckIfPlayerHasNeedle())
             {
                 //Fixes teddy bear 
-                OpenFirstDialogue();
+                FixTeddyBear();
             }
             else
             {
                 //Opens dialogue
-                FixTeddyBear();
+                OpenFirstDialogue();
             }
         }
         else
@@ -61,6 +63,7 @@ public class TeddyBear : MonoBehaviour
     {
         interactVisual.SetActive(false);
         bearText.SetActive(true);
+        chestScript.MakeChestOpenable();
     }
 
     void FixTeddyBear()
@@ -72,13 +75,13 @@ public class TeddyBear : MonoBehaviour
         upShelf.SetActive(true);
         catCDSCript.MakeCatCDTakeble();
         interactVisual.SetActive(false);
-        bearText.GetComponent<TextMeshProUGUI>().text = "THANKS! NOW YOU CAN JUMP TO THE TOP";
+        bearText.GetComponent<TextMeshProUGUI>().text = "THANKS! I THINK I SAW A CD UP THERE";
         bearText.SetActive(true);
     }
     void OpenThankYouDialogue()
     {
         interactVisual.SetActive(false);
-        bearText.GetComponent<TextMeshProUGUI>().text = "THANKS! NOW YOU CAN JUMP TO THE TOP";
+        bearText.GetComponent<TextMeshProUGUI>().text = "THANKS! I THINK I SAW A CD UP THERE";
         bearText.SetActive(true);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -95,6 +98,8 @@ public class TeddyBear : MonoBehaviour
         {
             interactVisual.SetActive(false);
             isInInteractRange = false;
+            bearText.SetActive(false);
+
         }
     }
 }//Class

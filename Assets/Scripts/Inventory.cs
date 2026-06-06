@@ -11,6 +11,7 @@ public class Inventory : MonoBehaviour
     int itemAmount = 0;
 
     bool isNeedleTaken = false;
+    bool isCatCDTaken = false;
 
     void Start()
     {
@@ -29,6 +30,10 @@ public class Inventory : MonoBehaviour
         if(_itemName=="needle")
         {
             isNeedleTaken = true;
+        }
+        if(_itemName == "catcd")
+        {
+            isCatCDTaken = true;
         }
         if (_itemName == "choco")
         {
@@ -75,6 +80,10 @@ public class Inventory : MonoBehaviour
     public bool CheckIfPlayerHasNeedle()
     {
         return isNeedleTaken;
+    }
+    public bool CheckIfPlayerHasCatCD()
+    {
+        return isCatCDTaken;
     }
 
 }
