@@ -71,7 +71,7 @@ public class TeddyBear : MonoBehaviour
         //Spawns cloud effect
         sr.sprite = fixedSprite;
         if (smokeParticle != null)
-            Instantiate(smokeParticle, transform.position, Quaternion.identity);
+            Instantiate(smokeParticle, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
         upShelf.SetActive(true);
         catCDSCript.MakeCatCDTakeble();
         interactVisual.SetActive(false);

@@ -40,11 +40,11 @@ public class Mixer : MonoBehaviour
         interactVisual.SetActive(false);
         cookiesParent.SetActive(true);
 
-        //if (inventorySc.CheckItemAmount())
-        //{
-        cookingMinigame.SetActive(true);
-        cMG.StartMiniGame();
-        //}
+        if (inventorySc.CheckItemAmount())
+        {
+            cookingMinigame.SetActive(true);
+            cMG.StartMiniGame();
+        }
         //If not working checks for all items 
         //If all items are ready it starts the mixer 
         //If it started it stops the mixer 

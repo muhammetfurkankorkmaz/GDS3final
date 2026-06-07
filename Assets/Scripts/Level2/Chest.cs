@@ -8,6 +8,8 @@ public class Chest : MonoBehaviour
     [SerializeField] GameObject interactVisual;
     [SerializeField] GameObject needleObject;
 
+    [SerializeField] AnimationPlayer animPlayerScript;
+
     bool isInInteractRange = false;
 
     bool isTakeble = false;
@@ -15,20 +17,21 @@ public class Chest : MonoBehaviour
     void Start()
     {
         InputController.Instance.onInteractButtonPress += CheckForInteraction;
-
     }
 
-    void Update()
-    {
-
-    }
     void CheckForInteraction()
     {
-        if (!isTakeble) return;
-        needleObject.SetActive(true);
+        if (!isTakeble || !isInInteractRange) return;
         isItemtaken = true;
+        animPlayerScript.ChangeState("BoxOpen");
         interactVisual.SetActive(false);
+        StartCoroutine(SetNeedleActive());
+    }
 
+    IEnumerator SetNeedleActive()
+    {
+        yield return new WaitForSeconds(0.4f);
+        needleObject.SetActive(true);
     }
     public void MakeChestOpenable()
     {
