@@ -19,6 +19,8 @@ public class CatCD : MonoBehaviour
 
     [SerializeField] Collider2D col;
 
+    [SerializeField] AudioClip takeSound;
+
     bool isInInteractRange = false;
 
     bool isTakeble = false;
@@ -48,6 +50,8 @@ public class CatCD : MonoBehaviour
         inventorySc.AddItem(interactibleName, interactibleSprite);
 
         RemoveInteraction();
+        SoundManager.Instance.PlaySoundEffect(takeSound, 1f);
+
 
     }
     void RemoveInteraction()

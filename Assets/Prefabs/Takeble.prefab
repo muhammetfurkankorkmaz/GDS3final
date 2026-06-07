@@ -87,3 +87,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactibleName: 
   interactibleSprite: {fileID: 21300000, guid: d5d77a10be80ca44884bbddb8aaf920f, type: 3}
+  particleObject: {fileID: 0}
+  takeSound: {fileID: 8300000, guid: 2c5a23505d52dd54c985c6556e5ce1a6, type: 3}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a60597f28be16564da10cdbd65ac5042
+guid: a24c131cee809f64a8df9be47f69ba9b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -134,7 +134,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: play_tus (1)_0
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 357
+        width: 566
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0eeb4c5edf06b9469e2e91e294b2541
+      internalID: -1796150432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: play_tus (1)_1
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 386
+        width: 566
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f887e13fbadee44badeb492be624b17
+      internalID: -1351067781
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: play_tus (1)_2
+      rect:
+        serializedVersion: 2
+        x: 1865
+        y: 380
+        width: 566
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f34c6632fa925ae48b35e65f2ffa84c1
+      internalID: 1700705078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: play_tus (1)_3
+      rect:
+        serializedVersion: 2
+        x: 2806
+        y: 378
+        width: 566
+        height: 341
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f98f8c5a90b77084dae03b428d27b06f
+      internalID: 725259051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +229,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      play_tus (1)_0: -1796150432
+      play_tus (1)_1: -1351067781
+      play_tus (1)_2: 1700705078
+      play_tus (1)_3: 725259051
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

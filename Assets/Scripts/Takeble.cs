@@ -16,6 +16,7 @@ public class Takeble : MonoBehaviour
     Inventory inventorySc;
 
     SpriteRenderer sr;
+    [SerializeField] AudioClip takeSound;
 
     Collider2D col;
 
@@ -41,6 +42,7 @@ public class Takeble : MonoBehaviour
         if (interactibleSc == null || inventorySc == null) return;
 
         if (isItemTaken || !inventorySc.CanTakeItem()) return;
+        SoundManager.Instance.PlaySoundEffect(takeSound, 1);
 
         inventorySc.AddItem(interactibleName, interactibleSprite);
 

@@ -63,6 +63,7 @@ MonoBehaviour:
   cHAnimationScript: {fileID: 8778440674928825740}
   headCheck: {fileID: 2386857186979930014}
   headRayDistance: 0.15
+  jumpSound: {fileID: 8300000, guid: 4f4e45ff82bd8604a92f659b5edf9e6b, type: 3}
 --- !u!61 &1214516868882447774
 BoxCollider2D:
   m_ObjectHideFlags: 0

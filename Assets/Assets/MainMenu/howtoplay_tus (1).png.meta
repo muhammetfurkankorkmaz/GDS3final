@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4a69fc69fc9b52240ba1bf1ed303d023
+guid: bf4fb6b96a6e46549ae478b2f520b174
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -136,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: credit_tus_0
+      name: howtoplay_tus (1)_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 359
-        width: 858
-        height: 316
+        x: 49
+        y: 284
+        width: 850
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -150,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 128b602ae8736304280e362e5bb1f134
-      internalID: -1730631500
+      spriteID: 733b0908b96a96e4bb696a6df0d32cc0
+      internalID: 1122144672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: credit_tus_1
+      name: howtoplay_tus (1)_2
       rect:
         serializedVersion: 2
-        x: 911
-        y: 359
-        width: 568
-        height: 316
+        x: 950
+        y: 265
+        width: 820
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -171,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 66a4699fb3b6a514c81af29a84e33d29
-      internalID: -745775951
+      spriteID: bb30b1cfb50ba2046ae7cd46fa1144db
+      internalID: 1013952229
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: credit_tus_2
+      name: howtoplay_tus (1)_3
       rect:
         serializedVersion: 2
-        x: 1491
-        y: 359
-        width: 422
-        height: 316
+        x: 1794
+        y: 264
+        width: 820
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -192,20 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92cf0c929d073044a8b5196912b97b23
-      internalID: -783207553
+      spriteID: a57460cca5ec1e946ae59e26fec46cc2
+      internalID: 259666137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: credit_tus_3
+      name: howtoplay_tus (1)_4
       rect:
         serializedVersion: 2
-        x: 1953
-        y: 359
-        width: 359
-        height: 316
+        x: 2695
+        y: 262
+        width: 820
+        height: 450
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -213,8 +213,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: deb8479afa7f7174fa313ea939998a3f
-      internalID: -905189026
+      spriteID: d74ff0580b9e2df42a7a3756a06e94c3
+      internalID: 1041259393
       vertices: []
       indices: 
       edges: []
@@ -230,10 +230,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      credit_tus_0: -1730631500
-      credit_tus_1: -745775951
-      credit_tus_2: 592292815
-      credit_tus_3: -783207553
+      howtoplay_tus (1)_0: 1122144672
+      howtoplay_tus (1)_1: 1926126875
+      howtoplay_tus (1)_2: 1013952229
+      howtoplay_tus (1)_3: 259666137
+      howtoplay_tus (1)_4: 1041259393
+      howtoplay_tus (1)_5: -47741388
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

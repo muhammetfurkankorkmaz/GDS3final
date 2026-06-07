@@ -41,6 +41,8 @@ public class CharacterController : MonoBehaviour
     [SerializeField] Transform headCheck; // small point at the top of the character
     [SerializeField] float headRayDistance = 0.2f; // distance to check platform above
 
+    [SerializeField] AudioClip jumpSound;
+
     Coroutine changeToIdleCoroutine;
 
     void Start()
@@ -199,6 +201,7 @@ public class CharacterController : MonoBehaviour
     }
     public void StartJumpAnimation()
     {
+
         cHAnimationScript.ChangeState("CharacterJump");
     }
     IEnumerator Turn(int _angle)
@@ -234,6 +237,8 @@ public class CharacterController : MonoBehaviour
         if (canJump && InputController.Instance.YInput >= 0)
         {
             //Jumps
+            SoundManager.Instance.PlaySoundEffect(jumpSound, 0.5f);
+
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             canJump = false;
             cHAnimationScript.ChangeState("CharacterJump");

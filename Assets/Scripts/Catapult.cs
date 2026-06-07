@@ -21,6 +21,7 @@ public class Catapult : MonoBehaviour
     Rigidbody2D playerRb;
 
     bool isZoomHappened = false;
+    [SerializeField] AudioClip jumpSound;
 
     void Start()
     {
@@ -40,8 +41,8 @@ public class Catapult : MonoBehaviour
                 //if (!isZoomHappened)
                 //{
 
-                    StartCoroutine(CameraZoomOut());
-    
+                StartCoroutine(CameraZoomOut());
+
             }
         }
     }
@@ -72,6 +73,8 @@ public class Catapult : MonoBehaviour
         // Reset old velocity first
         //playerRb.linearVelocity = Vector2.zero;
         cookieManCH.PlayCookieManCatapultAnimation();
+        SoundManager.Instance.PlaySoundEffect(jumpSound, 1);
+
 
         yield return new WaitForSeconds(0.5f);
         // Add launch force

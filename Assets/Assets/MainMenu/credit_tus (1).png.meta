@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1ea3dac10575ed541b4e01a4f02b93e7
+guid: c5c614a3a9091804e87a21071d900c67
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,12 +43,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 108
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -134,7 +134,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: credit_tus (1)_0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 325
+        width: 820
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4813f3e96ae53d745b20ceff30589103
+      internalID: -1145732528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_tus (1)_1
+      rect:
+        serializedVersion: 2
+        x: 957
+        y: 329
+        width: 820
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b640881ed3341a14fbaf85d91b688078
+      internalID: -1760153824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_tus (1)_2
+      rect:
+        serializedVersion: 2
+        x: 1802
+        y: 348
+        width: 820
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7303f1f4aeb8a734d9cd1d18009473a7
+      internalID: -1199101840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: credit_tus (1)_3
+      rect:
+        serializedVersion: 2
+        x: 2660
+        y: 360
+        width: 820
+        height: 365
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ec62322de2510a4bbc7111ab819d0e4
+      internalID: -2105858162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +229,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      credit_tus (1)_0: -1145732528
+      credit_tus (1)_1: -1760153824
+      credit_tus (1)_2: -1199101840
+      credit_tus (1)_3: -2105858162
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

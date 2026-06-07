@@ -11,6 +11,7 @@ public class Chest : MonoBehaviour
     [SerializeField] GameObject shineParticle;
 
     [SerializeField] AnimationPlayer animPlayerScript;
+    [SerializeField] AudioClip openSound;
 
     bool isInInteractRange = false;
 
@@ -23,12 +24,14 @@ public class Chest : MonoBehaviour
 
     void CheckForInteraction()
     {
-        if (!isTakeble || !isInInteractRange) return;
+        if (!isTakeble || !isInInteractRange || isItemtaken) return;
         isItemtaken = true;
         animPlayerScript.ChangeState("BoxOpen");
         interactVisual.SetActive(false);
         StartCoroutine(SetNeedleActive());
         shineParticle.SetActive(false);
+        SoundManager.Instance.PlaySoundEffect(openSound, 0.5f);
+
 
     }
 

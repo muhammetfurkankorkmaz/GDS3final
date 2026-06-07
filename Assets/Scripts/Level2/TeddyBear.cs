@@ -20,6 +20,8 @@ public class TeddyBear : MonoBehaviour
     [Header("Essentials")]
     [SerializeField] GameObject interactVisual;
 
+    [SerializeField] AudioClip fixSound;
+
     bool isInInteractRange = false;
 
     Inventory inventoryScript;
@@ -71,6 +73,8 @@ public class TeddyBear : MonoBehaviour
     {
         //Spawns cloud effect
         if (isFixed) return;
+        SoundManager.Instance.PlaySoundEffect(fixSound, 1f);
+
         sr.sprite = fixedSprite;
         if (smokeParticle != null)
             Instantiate(smokeParticle, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);

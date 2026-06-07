@@ -23,6 +23,12 @@ public class CookingMiniGame : MonoBehaviour
     [SerializeField] Color cookieEndColor;
     [SerializeField] GameObject cookieParticle;
 
+    [SerializeField] AudioClip succesSound;
+    [SerializeField] AudioClip failSound;
+    [SerializeField] AudioSource mixerSoundSource;
+
+
+
 
     public bool isGameWon { get; private set; } = false;
 
@@ -151,18 +157,26 @@ public class CookingMiniGame : MonoBehaviour
     {
         print("Mini game won");
         //It closes the object
+        SoundManager.Instance.PlaySoundEffect(succesSound, 0.3f);
+
         Instantiate(cookieMan, cookieManSpawnPoint.position, Quaternion.identity);
 
         isGameActive = false;
         isGameWon = true;
         gameObject.SetActive(false);
+        mixerSoundSource.Stop();
+
 
         //It spawns the cookie man
     }
 
     void LoseMiniGame()
     {
+        mixerSoundSource.Stop();
+
         //It closes the object
+        SoundManager.Instance.PlaySoundEffect(failSound, 0.3f);
+
         mixerScript.OpenInteractImage();
         //print("mini game lost YOU LOST");
         winCount = 0;

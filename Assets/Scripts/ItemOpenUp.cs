@@ -10,19 +10,20 @@ public class ItemOpenUp : MonoBehaviour
     [SerializeField] GameObject particleObject;
     Platform platformScript;
     SpriteRenderer sr;
+    [SerializeField] AudioClip openSound;
 
     float timer;
 
     float hue;
 
     bool isOpen = false;
+    bool isSoundPlayed = false;
     void Start()
     {
         platformScript = GetComponent<Platform>();
         sr = GetComponent<SpriteRenderer>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (platformScript.isOpening)
@@ -33,12 +34,18 @@ public class ItemOpenUp : MonoBehaviour
     void OpenItem()
     {
         if (isOpen) return;
+        if (!isSoundPlayed)
+        {
+            isSoundPlayed = true;
+            SoundManager.Instance.PlaySoundEffect(openSound, 0.1f);
+        }
         if (openAnimationName != "")
         {
             animationPlayerScript.ChangeState(openAnimationName);
         }
+
         timer += Time.deltaTime;
-        if (timer >= 0.38f)
+        if (timer >= 0.3f)
         {
             if (objectToOpen != null)
                 objectToOpen.SetActive(true);

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 79f1a6067856f8542adff43589dc441c
+guid: 4faaf3533f1911e4ebc4de36c5d77606
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -134,7 +134,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: quit_tus (1)_0
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 321
+        width: 686
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75c4c5756a4b8024797023d102604920
+      internalID: 1756935622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quit_tus (1)_1
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 310
+        width: 686
+        height: 374
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d6c66f43add02b4cab0f4ada66a3478
+      internalID: -145677631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quit_tus (1)_2
+      rect:
+        serializedVersion: 2
+        x: 1807
+        y: 344
+        width: 686
+        height: 317
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 383bf370e4e48634d9fadcf628288438
+      internalID: 1324559914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: quit_tus (1)_4
+      rect:
+        serializedVersion: 2
+        x: 2757
+        y: 371
+        width: 686
+        height: 268
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1903eacacc18409489f3918172a821fa
+      internalID: 1737167782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -145,7 +229,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      quit_tus (1)_0: 1756935622
+      quit_tus (1)_1: -145677631
+      quit_tus (1)_2: 1324559914
+      quit_tus (1)_3: -1457697189
+      quit_tus (1)_4: 1737167782
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

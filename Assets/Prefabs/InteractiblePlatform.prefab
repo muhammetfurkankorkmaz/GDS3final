@@ -61,6 +61,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectToOpen: {fileID: 0}
+  openAnimationName: 
+  animationPlayerScript: {fileID: 0}
+  particleObject: {fileID: 0}
+  openSound: {fileID: 8300000, guid: 64f8236cacb964641b17fd9958ba498f, type: 3}
 --- !u!61 &8986503858296031582
 BoxCollider2D:
   m_ObjectHideFlags: 0

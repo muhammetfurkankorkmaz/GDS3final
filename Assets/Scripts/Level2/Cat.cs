@@ -11,6 +11,8 @@ public class Cat : MonoBehaviour
     float walkSpeed = 2;
     Vector3 fallPosition;
     [SerializeField] Transform endPosition;
+
+    [SerializeField] AudioClip catSound;
     void Start()
     {
         animPlayerScript = GetComponent<AnimationPlayer>();
@@ -30,6 +32,8 @@ public class Cat : MonoBehaviour
     }
     IEnumerator CatJumpAnimation()
     {
+        SoundManager.Instance.PlaySoundEffect(catSound, 1f);
+
         Vector3 startPos = transform.position;
         animPlayerScript.ChangeState("CatJump");
 

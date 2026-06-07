@@ -12,6 +12,8 @@ public class Mixer : MonoBehaviour
     bool isInInteractRange = false;
     [SerializeField] GameObject cookingMinigame;
 
+    [SerializeField] AudioSource mixerSoundSource;
+
     //Interactible interactibleSc;
     Inventory inventorySc;
 
@@ -44,6 +46,7 @@ public class Mixer : MonoBehaviour
         {
             cookingMinigame.SetActive(true);
             cMG.StartMiniGame();
+            mixerSoundSource.Play();
         }
         //If not working checks for all items 
         //If all items are ready it starts the mixer 
@@ -56,12 +59,13 @@ public class Mixer : MonoBehaviour
         if (cookingMinigame.GetComponent<CookingMiniGame>().isGameWon || !isInInteractRange) return;
         interactVisual.SetActive(true);
         cookiesParent.SetActive(false);
+        mixerSoundSource.Stop();
 
 
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player")&& inventorySc.CheckItemAmount())
         {
             isInInteractRange = true;
             if (cookingMinigame.GetComponent<CookingMiniGame>().isGameWon || cookingMinigame.GetComponent<CookingMiniGame>().isGameActive) return;
@@ -70,10 +74,12 @@ public class Mixer : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player")&& inventorySc.CheckItemAmount())
         {
             interactVisual.SetActive(false);
             isInInteractRange = false;
+            //mixerSoundSource.Stop();
+
 
         }
     }
