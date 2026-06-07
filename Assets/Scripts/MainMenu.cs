@@ -10,8 +10,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] GameObject creditsTAB;
     [SerializeField] GameObject howToPlayTAB;
 
-  
-
     public void StartButton()
     {
         SceneManager.LoadScene("Level 1");
