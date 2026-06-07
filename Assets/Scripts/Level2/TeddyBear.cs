@@ -9,6 +9,7 @@ public class TeddyBear : MonoBehaviour
     [SerializeField] GameObject upShelf;
     [SerializeField] Sprite fixedSprite;
     [SerializeField] GameObject smokeParticle;
+    [SerializeField] GameObject shineParticle;
 
     [SerializeField] CatCD catCDSCript;
 
@@ -42,7 +43,7 @@ public class TeddyBear : MonoBehaviour
         {
             //If not fixed it gives dialogue 
             //checks if it is async fix interaction
-            if (inventoryScript.CheckIfPlayerHasNeedle())
+            if (inventoryScript.CheckIfPlayerHasNeedle() && !isFixed)
             {
                 //Fixes teddy bear 
                 FixTeddyBear();
@@ -69,6 +70,7 @@ public class TeddyBear : MonoBehaviour
     void FixTeddyBear()
     {
         //Spawns cloud effect
+        if (isFixed) return;
         sr.sprite = fixedSprite;
         if (smokeParticle != null)
             Instantiate(smokeParticle, transform.position + new Vector3(0, 0.5f, 0), Quaternion.identity);
@@ -77,6 +79,8 @@ public class TeddyBear : MonoBehaviour
         interactVisual.SetActive(false);
         bearText.GetComponent<TextMeshProUGUI>().text = "THANKS! I THINK I SAW A CD UP THERE";
         bearText.SetActive(true);
+        isFixed = true;
+        shineParticle.SetActive(false);
     }
     void OpenThankYouDialogue()
     {

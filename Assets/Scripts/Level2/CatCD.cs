@@ -6,6 +6,7 @@ public class CatCD : MonoBehaviour
 {
     [Header("Essentials")]
     [SerializeField] GameObject interactVisual;
+    [SerializeField] GameObject shineParticle;
     [Header("Varibles")]
 
     [SerializeField] string interactibleName;
@@ -16,7 +17,7 @@ public class CatCD : MonoBehaviour
 
     [SerializeField] SpriteRenderer sr;
 
-  [SerializeField]  Collider2D col;
+    [SerializeField] Collider2D col;
 
     bool isInInteractRange = false;
 
@@ -30,7 +31,7 @@ public class CatCD : MonoBehaviour
 
     void CheckForInteraction()
     {
-        if (isTakeble)
+        if (isTakeble && isInInteractRange)
             TakeTakeble();
     }
 
@@ -54,6 +55,7 @@ public class CatCD : MonoBehaviour
         isItemTaken = true;
         sr.enabled = false;
         col.enabled = false;
+        shineParticle.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
