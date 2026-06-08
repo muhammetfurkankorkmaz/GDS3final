@@ -38,6 +38,16 @@ public class GameManager : MonoBehaviour
         isGameStopped = true;
     }
 
+    public void HitStop()
+    {
+        StartCoroutine(HitStopCoroutine());
+    }
+    IEnumerator HitStopCoroutine()
+    {
+        Time.timeScale = 0;
+        yield return new WaitForSecondsRealtime(0.25f);
+        Time.timeScale = 1;
+    }
     public void StartGame()
     {
         Time.timeScale = 1;

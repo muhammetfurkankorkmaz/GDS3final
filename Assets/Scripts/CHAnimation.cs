@@ -13,7 +13,7 @@ public class CHAnimation : MonoBehaviour
         if (currentState == newState) return;
 
         animator.Play(newState);
-        print("Playng  " + newState + "  " + Time.time);
+        //print("Playng  " + newState + "  " + Time.time);
 
         currentState = newState;
     }

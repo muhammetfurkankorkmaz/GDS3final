@@ -11010,7 +11010,7 @@ MonoBehaviour:
   sr: {fileID: 103323236}
   chestScript: {fileID: 1336883342}
   interactVisual: {fileID: 1050770884}
-  fixSound: {fileID: 8300000, guid: 2c5a23505d52dd54c985c6556e5ce1a6, type: 3}
+  fixSound: {fileID: 8300000, guid: d50b40dfaf79f544983a86a16e4f84e0, type: 3}
 --- !u!61 &2094567206
 BoxCollider2D:
   m_ObjectHideFlags: 0

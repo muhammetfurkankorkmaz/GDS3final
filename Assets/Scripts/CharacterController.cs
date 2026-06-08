@@ -20,7 +20,7 @@ public class CharacterController : MonoBehaviour
     float constantGravity;
 
 
-    bool isOnAir = false;
+    public bool isOnAir { get; private set; } = false;
     bool isOnPlatform = false;
     bool canJump = false;
     bool isHangFalling = false;
@@ -146,7 +146,8 @@ public class CharacterController : MonoBehaviour
             if (currentPlatform != null)
             {
                 Physics2D.IgnoreCollision(characterCollider, currentPlatform, false);
-                currentPlatformScript.ChangeActivation(false);
+                if (currentPlatformScript != null)
+                    currentPlatformScript.ChangeActivation(false);
             }
         }
     }
