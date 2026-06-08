@@ -27,26 +27,18 @@ public class Catapult : MonoBehaviour
     {
         playerObject = GameObject.FindGameObjectWithTag("Player");
         playerRb = playerObject.GetComponent<Rigidbody2D>();
+
+        InputController.Instance.onInteractButtonPress += Interact;
     }
 
-    // Update is called once per frame
-    void Update()
+   
+    void Interact()
     {
-        if (isInInteractRange)
-        {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                print("hoho");
-                throwPlayerCoroutine = StartCoroutine(LaunchPlayer());
-                //if (!isZoomHappened)
-                //{
+        if (!isInInteractRange) return;
+        throwPlayerCoroutine = StartCoroutine(LaunchPlayer());
 
-                StartCoroutine(CameraZoomOut());
-
-            }
-        }
+        StartCoroutine(CameraZoomOut());
     }
-
     IEnumerator CameraZoomOut()
     {
         isZoomHappened = true;

@@ -42,16 +42,13 @@ public class CookingMiniGame : MonoBehaviour
     void Start()
     {
         mixerScript = GetComponentInParent<Mixer>();
+        InputController.Instance.onInteractButtonPress += CheckSlider;
     }
 
     void Update()
     {
         if (isGameActive)
         {
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                CheckSlider();
-            }
             MoveSlider();
         }
     }
@@ -92,6 +89,7 @@ public class CookingMiniGame : MonoBehaviour
     }
     void CheckSlider()
     {
+        if (isGameWon) return;
         float distance = Mathf.Abs(
             slider.transform.localPosition.x -
             stopPoint.transform.localPosition.x

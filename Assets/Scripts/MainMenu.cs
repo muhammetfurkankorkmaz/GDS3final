@@ -20,6 +20,78 @@ public class MainMenu : MonoBehaviour
     bool isCreditsPressedBefore = false;
     bool isHowToPlayPressedBefore = false;
 
+    [SerializeField] GameObject cookieMan;
+
+    [SerializeField] Transform[] buttonPos;
+
+    int currentButtonNumber = 0;
+
+    bool hasTakenJoyInput = false;
+    float joyTimer;
+
+    private void Start()
+    {
+        InputController.Instance.onInteractButtonPress += ApplyButton;
+    }
+    private void Update()
+    {
+        if (hasTakenJoyInput)
+        {
+            joyTimer += Time.deltaTime;
+            if (joyTimer >= 0.5f)
+            {
+                hasTakenJoyInput = false;
+                joyTimer = 0;
+            }
+        }
+        JoyStickInputController();
+    }
+    void JoyStickInputController()
+    {
+        if (hasTakenJoyInput) return;
+        float joyYInput = Input.GetAxisRaw("Vertical");
+        if (joyYInput == 1)
+        {
+           
+            currentButtonNumber--;
+            if (currentButtonNumber == -1)
+            {
+                currentButtonNumber = 3;
+            }
+            cookieMan.transform.position = buttonPos[currentButtonNumber].transform.position;
+            hasTakenJoyInput = true;
+        }
+        else if (joyYInput == -1)
+        {
+            currentButtonNumber++;
+            if (currentButtonNumber == 4)
+            {
+                currentButtonNumber = 0;
+            }
+            cookieMan.transform.position = buttonPos[currentButtonNumber].transform.position;
+            hasTakenJoyInput = true;
+        }
+    }
+    void ApplyButton()
+    {
+        if (currentButtonNumber == 0)
+        {
+            StartButton();
+        }
+        else if (currentButtonNumber == 1)
+        {
+            HowToPlayButton();
+        }
+        else if (currentButtonNumber == 2)
+        {
+            CreditsButton();
+        }
+        else if (currentButtonNumber == 3)
+        {
+            QuitButton();
+        }
+    }
+
     public void StartButton()
     {
         startAnim.ChangeState("StartPress");
