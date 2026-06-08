@@ -11,6 +11,7 @@ public class CharacterHealth : MonoBehaviour
     [SerializeField] Material flashMaterial;
     Material originalMaterial;
     [SerializeField] AudioClip hurtSound;
+    [SerializeField] AudioClip loseSound;
     [SerializeField] GameObject hurtParticle;
     void Start()
     {
@@ -43,6 +44,8 @@ public class CharacterHealth : MonoBehaviour
     }
     void Dead()
     {
+        SoundManager.Instance.PlaySoundEffect(loseSound, 0.5f);
 
+        GameManager.Instance.LoseGame();
     }
 }

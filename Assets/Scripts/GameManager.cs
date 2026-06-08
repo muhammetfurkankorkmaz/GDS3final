@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,14 +24,26 @@ public class GameManager : MonoBehaviour
     }
 
     public bool isGameStopped { get; private set; }
+
+    bool isGameLost = false;
+    [SerializeField] GameObject loseScreen;
+    [SerializeField] GameObject winObjects;
     void Start()
     {
+        InputController.Instance.onInteractButtonPress += ReloadScene;
 
     }
 
     void Update()
     {
 
+    }
+    void ReloadScene()
+    {
+        if (!isGameLost) return;
+
+        Scene scene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(scene.name);
     }
     public void StopGame()
     {
@@ -53,5 +66,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         isGameStopped = false;
 
+    }
+    public void LoseGame()
+    {
+        isGameLost = true;
+        isGameStopped = true;
+        if (loseScreen != null)
+            loseScreen.SetActive(true);
+    }
+    public void WinGame()
+    {
+        winObjects.SetActive(true);
     }
 }//Class

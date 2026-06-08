@@ -36,6 +36,7 @@ public class Hamster : MonoBehaviour
     CharacterController chScript;
 
     [SerializeField] AudioClip wallHitSound;
+    [SerializeField] AudioClip winSound;
     [SerializeField] AudioClip fallSound;
     [SerializeField] GameObject wallParticle;
     void Start()
@@ -48,7 +49,7 @@ public class Hamster : MonoBehaviour
 
     void Update()
     {
-        if (isStarted)
+        if (isStarted && !GameManager.Instance.isGameStopped)
         {
             if (isRecovering)
             {
@@ -96,7 +97,13 @@ public class Hamster : MonoBehaviour
     }
     void Dead()
     {
-
+        GameManager.Instance.WinGame();
+        DeadAnimation();
+    }
+    void DeadAnimation()
+    {
+        SoundManager.Instance.PlaySoundEffect(winSound, 0.5f);
+        StartCoroutine(PlayDeadAnimation());
     }
     void StartRest()
     {
@@ -118,7 +125,46 @@ public class Hamster : MonoBehaviour
         isJumpAttacking = true;
         StartCoroutine(StartJumpAttack());
     }
+    IEnumerator PlayDeadAnimation()
+    {
+        Vector3 originalPos = transform.position;
 
+        // Shake
+        float shakeDuration = 0.2f;
+        float shakeMagnitude = 0.1f;
+        float elapsed = 0f;
+
+        while (elapsed < shakeDuration)
+        {
+            float offsetX = Random.Range(-1f, 1f) * shakeMagnitude;
+            float offsetY = Random.Range(-1f, 1f) * shakeMagnitude;
+
+            transform.position = originalPos + new Vector3(offsetX, offsetY, 0);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = originalPos;
+
+        // Fall down
+        Vector3 startPos = transform.position;
+        Vector3 endPos = startPos + new Vector3(0, -5, 0);
+
+        elapsed = 0f;
+        float duration = 1f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            transform.position = Vector3.Lerp(startPos, endPos, t);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = endPos;
+    }
     IEnumerator StartJumpAttack()
     {
         //Gets little bit smaller 
@@ -333,11 +379,11 @@ public class Hamster : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player") && isRunAttacking && canDamage)
         {
-            
 
-                canDamage = false;
-                collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(5);
-            
+
+            canDamage = false;
+            collision.gameObject.GetComponent<CharacterHealth>().TakeDamage(5);
+
         }
     }
 }//Class
