@@ -37,6 +37,7 @@ public class Hamster : MonoBehaviour
 
     [SerializeField] AudioClip wallHitSound;
     [SerializeField] AudioClip winSound;
+    [SerializeField] AudioClip startSound;
     [SerializeField] AudioClip fallSound;
     [SerializeField] GameObject wallParticle;
     void Start()
@@ -349,6 +350,7 @@ public class Hamster : MonoBehaviour
         Vector3 middleRotation = new Vector3(0, 180, 65);
         float elapsed = 0;
         float duration = 0.2f;
+        SoundManager.Instance.PlaySoundEffect(startSound, 0.5f);
 
         elapsed = 0;
         while (elapsed < duration)

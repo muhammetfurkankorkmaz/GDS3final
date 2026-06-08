@@ -3468,9 +3468,10 @@ MonoBehaviour:
   leftWall: {x: -6, y: -3.71, z: 0}
   rightWall: {x: 6, y: -3.71, z: 0}
   chHealthScript: {fileID: 1419823084}
-  maxHP: 100
+  maxHP: 10
   wallHitSound: {fileID: 8300000, guid: a04d12438620e834bb63c2415146210c, type: 3}
   winSound: {fileID: 8300000, guid: 63b1a3772665aaf43a21b23fba6568bb, type: 3}
+  startSound: {fileID: 8300000, guid: 3a5d9496550a2c54b9e5706b79b30a40, type: 3}
   fallSound: {fileID: 8300000, guid: a36c6c9e1fefd0441962cc955cd3edc3, type: 3}
   wallParticle: {fileID: 4361489816497097533, guid: 2fdec1391f0718945a428a0f6a68b378, type: 3}
 --- !u!61 &2007500711

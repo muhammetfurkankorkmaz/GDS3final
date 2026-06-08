@@ -71,7 +71,7 @@ public class MainMenu : MonoBehaviour
     IEnumerator LateStarts()
     {
         yield return new WaitForSeconds(0.5f);
-        SceneManager.LoadScene("Level 1");
+        SceneManager.LoadScene("Level 0");
 
 
     }
